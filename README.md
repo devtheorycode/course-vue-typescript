@@ -9,4 +9,11 @@ Afin d'avoir la codebase de départ (branche `starter`) sur votre machine, veuil
 npx degit devtheorycode/course-composition-api#starter course-capi-starter
 ```
 
-Cela copiera la branche `starter` de ce repository dans un nouveau dossier `course-capi-starter`, vous pourrez alors commencer le cours avec le même code que celui en vidéo.
+Cela copiera la branche `starter` de ce repository dans un nouveau dossier `course-capi-starter`.
+
+Pour lancer la webapp :
+- `npm i`: installation des paquets
+- `npm run dev`: lancement du mode de dev
+
+Bon apprentissage et bon codage !
+
