@@ -9,12 +9,12 @@ export default {
   components: { DurationPicker },
   data() {
     return {
-      durationOneValues: {
+      rawDurationOne: {
         hours: null,
         minutes: null,
         seconds: null,
       },
-      durationTwoValues: {
+      rawDurationTwo: {
         hours: null,
         minutes: null,
         seconds: null,
@@ -24,17 +24,17 @@ export default {
   computed: {
     durationOne() {
       return dayjs.duration(0)
-        .add(this.durationOneValues.hours, 'hours')
-        .add(this.durationOneValues.minutes, 'minutes')
-        .add(this.durationOneValues.seconds, 'seconds')
+        .add(this.rawDurationOne.hours, 'hours')
+        .add(this.rawDurationOne.minutes, 'minutes')
+        .add(this.rawDurationOne.seconds, 'seconds')
     },
     durationTwo() {
       return dayjs.duration(0)
-        .add(this.durationTwoValues.hours, 'hours')
-        .add(this.durationTwoValues.minutes, 'minutes')
-        .add(this.durationTwoValues.seconds, 'seconds')
+        .add(this.rawDurationTwo.hours, 'hours')
+        .add(this.rawDurationTwo.minutes, 'minutes')
+        .add(this.rawDurationTwo.seconds, 'seconds')
     },
-    resultDurationValues() {
+    rawDurationResult() {
       const resultDuration = dayjs.duration(0)
         .add(this.durationOne)
         .add(this.durationTwo)
@@ -53,15 +53,15 @@ export default {
   <div class="mt-10 text-center space-y-10">
     <h1 class="text-3xl mx-auto">Time Calculator</h1>
     <div class="inline-grid grid-cols-4 gap-4">
-      <DurationPicker class="col-span-3 col-start-2" :duration="durationOneValues" />
+      <DurationPicker class="col-span-3 col-start-2" :raw-duration="rawDurationOne" />
 
       <span class="inline-flex justify-center items-center">+</span>
-      <DurationPicker class="col-span-3" :duration="durationTwoValues" />
+      <DurationPicker class="col-span-3" :raw-duration="rawDurationTwo" />
 
       <span class="col-span-4 h-0 border-t-[1px]"></span>
 
       <span class="inline-flex justify-center items-center">=</span>
-      <DurationPicker class="col-span-3" :readonly="true" :duration="resultDurationValues" />
+      <DurationPicker class="col-span-3" :readonly="true" :raw-duration="rawDurationResult" />
     </div>
   </div>
 </template>
