@@ -1,7 +1,12 @@
-# Vue 3 + Vite
+# Codebase du cours "Vue.js 3 - Composition API & Composables"
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Informations sur les branches de ce repo. :
+- Branche `master`: code final du projet
+- Branche `starter`: code de départ du projet
 
-## Recommended IDE Setup
+Afin d'avoir la codebase de départ (branche `starter`) sur votre machine, veuillez exécutez cette commande :
+```
+npx degit devtheorycode/course-composition-api#starter course-capi-starter
+```
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+Cela copiera la branche `starter` de ce repository dans un nouveau dossier `course-capi-starter`, vous pourrez alors commencer le cours avec le même code que celui en vidéo.
