@@ -1,15 +1,17 @@
-# Codebase du cours "Vue.js 3 - Composition API & Composables"
+# Codebase du cours "TypeScript sur Vue.js"
 
 Informations sur les branches de ce repo. :
-- Branche `master`: code final du projet
-- Branche `starter`: code de départ du projet
+- Branche `starter-capi`: code de départ pour la Composition API
+- Branche `starter-oapi`: code de départ pour l'Options API
+- Branche `finisher-capi`: code final pour la Composition API
+- Branche `finisher-oapi`: code final pour l'Options API
 
-Afin d'avoir la codebase de départ (branche `starter`) sur votre machine, veuillez exécutez cette commande :
+Afin d'avoir la codebase de départ (branche `starter-capi` par exemple) sur votre machine en local, veuillez exécutez cette commande :
 ```
-npx degit devtheorycode/course-composition-api#starter course-capi-starter
+npx degit devtheorycode/course-vue-typescript#starter-capi course-vue-typescript
 ```
 
-Cela copiera la branche `starter` de ce repository dans un nouveau dossier `course-capi-starter`.
+Cela copiera le code de la branche `starter-capi` dans un nouveau dossier `course-capi-starter` de votre machine.
 
 Pour lancer la webapp :
 - `npm i`: installation des paquets
