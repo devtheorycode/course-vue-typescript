@@ -3,8 +3,8 @@
 Informations sur les branches de ce repo. :
 - Branche `starter-capi`: code de départ pour la Composition API
 - Branche `starter-oapi`: code de départ pour l'Options API
-- Branche `finisher-capi`: code final pour la Composition API
-- Branche `finisher-oapi`: code final pour l'Options API
+- Branche `dev-capi`: code final pour la Composition API
+- Branche `dev-oapi`: code final pour l'Options API
 
 Afin d'avoir la codebase de départ (branche `starter-capi` par exemple) sur votre machine en local, veuillez exécutez cette commande :
 ```
