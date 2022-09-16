@@ -1,10 +1,10 @@
-<script setup>
-  import { useOptions } from '../composables/options.js'
+<script setup lang="ts">
+  import { useOptions } from '../composables/options'
 
   const { showSecondsInDurations } = useOptions()
 
-  function update(event) {
-    showSecondsInDurations.value = event.target.checked
+  function update(event: Event) {
+    showSecondsInDurations.value = (event.target as HTMLInputElement).checked
   }
 </script>
 

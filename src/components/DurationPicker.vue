@@ -1,30 +1,29 @@
-<script setup>
-  import { useOptions } from '../composables/options.js'
+<script setup lang="ts">
+  import { ref } from 'vue'
+  import { useOptions } from '../composables/options'
+  import type { RawDuration } from '../types/duration.types';
 
   const { showSecondsInDurations } = useOptions()
 
-  defineProps({
-    readonly: {
-      type: Boolean,
-      default: false
-    },
-    rawDuration: {
-      type: Object,
-      default: {
-        hours: null,
-        minutes: null,
-        seconds: null,
-      }
-    }
+  const minutes = ref<HTMLInputElement | null>(null)
+  const seconds = ref<HTMLInputElement | null>(null)
+
+  interface Props {
+    readonly?: boolean
+    rawDuration: RawDuration
+  }
+
+  withDefaults(defineProps<Props>(), {
+    readonly: false
   })
 </script>
 
 <template>
   <div>
     <div class="inline-flex items-center pr-2 bg-gray-100 border border-gray-100 rounded-md text-lg text-right focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500 focus-within:outline-none focus-within:ring-opacity-50">
-      <input ref="hours" type="number" v-model="rawDuration.hours" @keypress.enter="$refs.minutes.focus()" :readonly="readonly" min="0" placeholder="0" class="timeInput">
+      <input type="number" v-model="rawDuration.hours" @keypress.enter="minutes?.focus()" :readonly="readonly" min="0" placeholder="0" class="timeInput">
       <span class="timeLabel">h </span>
-      <input ref="minutes" type="number" v-model="rawDuration.minutes" @keypress.enter="$refs.seconds.focus()" :readonly="readonly" min="0" max="59" placeholder="0" class="timeInput">
+      <input ref="minutes" type="number" v-model="rawDuration.minutes" @keypress.enter="seconds?.focus()" :readonly="readonly" min="0" max="59" placeholder="0" class="timeInput">
       <span class="timeLabel">m </span>
       <input v-show="showSecondsInDurations" ref="seconds" type="number" v-model="rawDuration.seconds" :readonly="readonly" min="0" max="59" placeholder="0" class="timeInput">
       <span v-show="showSecondsInDurations" class="timeLabel">s </span>

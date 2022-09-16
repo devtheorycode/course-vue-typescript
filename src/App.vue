@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import DurationPicker from './components/DurationPicker.vue'
 import Options from './components/Options.vue'
 import { useDuration } from './composables/duration';

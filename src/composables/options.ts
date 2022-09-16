@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 
-const showSecondsInDurations = ref(true)
+const showSecondsInDurations = ref<boolean>(true)
 
 export function useOptions() {
   return {
