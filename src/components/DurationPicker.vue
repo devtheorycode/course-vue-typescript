@@ -1,12 +1,16 @@
-<script>
-export default {
+<script lang="ts">
+import type { PropType } from 'vue';
+import type { RawDuration } from '../types/duration.types';
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   props: {
     readonly: {
       type: Boolean,
       default: false
     },
     rawDuration: {
-      type: Object,
+      type: Object as PropType<RawDuration>,
       default: {
         hours: null,
         minutes: null,
@@ -14,15 +18,15 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <template>
   <div>
     <div class="inline-flex items-center pr-2 bg-gray-100 border border-gray-100 rounded-md text-lg text-right focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500 focus-within:outline-none focus-within:ring-opacity-50">
-      <input ref="hours" type="number" v-model="rawDuration.hours" @keypress.enter="$refs.minutes.focus()" :readonly="readonly" min="0" placeholder="0" class="timeInput">
+      <input type="number" v-model="rawDuration.hours" @keypress.enter="($refs.minutes as HTMLInputElement).focus()" :readonly="readonly" min="0" placeholder="0" class="timeInput">
       <span class="timeLabel">h </span>
-      <input ref="minutes" type="number" v-model="rawDuration.minutes" @keypress.enter="$refs.seconds.focus()" :readonly="readonly" min="0" max="59" placeholder="0" class="timeInput">
+      <input ref="minutes" type="number" v-model="rawDuration.minutes" @keypress.enter="($refs.seconds as HTMLInputElement).focus()" :readonly="readonly" min="0" max="59" placeholder="0" class="timeInput">
       <span class="timeLabel">m </span>
       <input ref="seconds" type="number" v-model="rawDuration.seconds" :readonly="readonly" min="0" max="59" placeholder="0" class="timeInput">
       <span class="timeLabel">s </span>

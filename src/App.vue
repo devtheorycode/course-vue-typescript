@@ -1,11 +1,13 @@
-<script>
+<script lang="ts">
+import type { RawDuration, DayjsDuration } from './types/duration.types'
+import { defineComponent } from 'vue'
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 import DurationPicker from './components/DurationPicker.vue'
 
 dayjs.extend(duration)
 
-export default {
+export default defineComponent({
   components: { DurationPicker },
   data() {
     return {
@@ -13,28 +15,22 @@ export default {
         hours: null,
         minutes: null,
         seconds: null,
-      },
+      } as RawDuration,
       rawDurationTwo: {
         hours: null,
         minutes: null,
         seconds: null,
-      },
+      } as RawDuration,
     }
   },
   computed: {
-    durationOne() {
-      return dayjs.duration(0)
-        .add(this.rawDurationOne.hours, 'hours')
-        .add(this.rawDurationOne.minutes, 'minutes')
-        .add(this.rawDurationOne.seconds, 'seconds')
+    durationOne(): DayjsDuration {
+      return this.getDayjsDurationFromRaw(this.rawDurationOne)
     },
-    durationTwo() {
-      return dayjs.duration(0)
-        .add(this.rawDurationTwo.hours, 'hours')
-        .add(this.rawDurationTwo.minutes, 'minutes')
-        .add(this.rawDurationTwo.seconds, 'seconds')
+    durationTwo(): DayjsDuration {
+      return this.getDayjsDurationFromRaw(this.rawDurationTwo)
     },
-    rawDurationResult() {
+    rawDurationResult(): RawDuration {
       const resultDuration = dayjs.duration(0)
         .add(this.durationOne)
         .add(this.durationTwo)
@@ -45,8 +41,19 @@ export default {
         seconds: resultDuration.seconds(),
       }
     }
+  },
+  methods: {
+    getDayjsDurationFromRaw(rawDuration: RawDuration): DayjsDuration {
+      return dayjs.duration(0)
+        .add(rawDuration.hours ?? 0, 'hours')
+        .add(rawDuration.minutes ?? 0, 'minutes')
+        .add(rawDuration.seconds ?? 0, 'seconds')
+    }
+  },
+  mounted() {
+    this.$axios()
   }
-}
+})
 </script>
 
 <template>
